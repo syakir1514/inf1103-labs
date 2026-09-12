@@ -1,0 +1,61 @@
+PS C:\Users\muham\Documents\INF1103-Labs> git log
+commit d6c258bcc34b78031161370f8dc61b536e4d3188 (HEAD -> master, origin/master, origin/HEAD)
+Author: Syakir <syakir1514@gmail.com>
+Date:   Sat Sep 12 19:05:44 2026 +0800
+
+    LAB2 done, with docker and dockerfile
+
+commit 4dad7f4abb34c56b68313be6eeaabe4167c7bbce
+Author: Syakir <syakir1514@gmail.com>
+Date:   Sat Sep 12 17:18:57 2026 +0800
+
+    removed moved file
+
+commit 2bf072cfb50a25e161fa8c161b13fee2c43f6a69
+Author: Syakir <syakir1514@gmail.com>
+Date:   Sat Sep 12 17:17:37 2026 +0800
+
+    LAB2 folder
+
+commit 5d929664273969559e374ccb09c97a8ca29b7a91
+Author: Syakir <syakir1514@gmail.com>
+Date:   Sat Sep 12 17:16:09 2026 +0800
+
+    lab 2: auditor =.py file created
+
+commit dc7ba964b141d29c2c8e080d6997669dade4f345
+Author: Syakir <syakir1514@gmail.com>
+Date:   Sat Sep 12 16:20:56 2026 +0800
+
+    organise before lab 2
+
+commit 060b02676ba00212973dba5e9a39a7b1c58e95e2
+Author: Syakir <syakir1514@gmail.com>
+Date:   Fri Sep 4 11:51:31 2026 +0800
+
+    activity 5, in A4
+
+commit eef3a7333077ffd6a0f5416605b2740c257c6af2
+Author: Syakir <syakir1514@gmail.com>
+Date:   Fri Sep 4 11:37:44 2026 +0800
+
+    new file, A4.py for activity 4
+
+commit 08e48129dba5c63ccff88d77f5407e9bd8293af0
+Author: Syakir <syakir1514@gmail.com>
+Date:   Fri Sep 4 11:29:37 2026 +0800
+
+    day 1-3 follower updates
+
+commit 9654b0c5bfb5f5e757f77be20ad2fb10c5ff5ba8
+Author: Syakir <syakir1514@gmail.com>
+Date:   Fri Sep 4 11:22:54 2026 +0800
+
+    added username, bio, followers
+
+commit a9f4bc7e2b0c00da87dbc9aa123cec086da83e7d
+Author: Syakir <syakir1514@gmail.com>
+Date:   Fri Sep 4 11:13:43 2026 +0800
+
+    First Post
+(END)
