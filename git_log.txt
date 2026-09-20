@@ -1,0 +1,34 @@
+PS C:\Users\muham\Documents\INF1103-Labs\LAB3> git log
+commit 2b6cb92fb479e364eecb675b3e69cfb11ed16f6b (HEAD -> master)
+Author: Syakir <2602967@sit.singaporetech.edu.sg>
+Date:   Sun Sep 20 13:58:08 2026 +0800
+
+    LAB3: modular_auditor.py created
+
+commit d81dc4c70e075381c4b91a7c401295d3c356f40d (origin/master, origin/HEAD)
+Author: Syakir <syakir1514@gmail.com>
+Date:   Sat Sep 12 19:08:49 2026 +0800
+
+    added git log
+
+commit d6c258bcc34b78031161370f8dc61b536e4d3188
+Author: Syakir <syakir1514@gmail.com>
+Date:   Sat Sep 12 19:05:44 2026 +0800
+
+    LAB2 done, with docker and dockerfile
+
+commit 4dad7f4abb34c56b68313be6eeaabe4167c7bbce
+Author: Syakir <syakir1514@gmail.com>
+Date:   Sat Sep 12 17:18:57 2026 +0800
+
+    removed moved file
+
+commit 2bf072cfb50a25e161fa8c161b13fee2c43f6a69
+Author: Syakir <syakir1514@gmail.com>
+Date:   Sat Sep 12 17:17:37 2026 +0800
+
+    LAB2 folder
+
+commit 5d929664273969559e374ccb09c97a8ca29b7a91
+Author: Syakir <syakir1514@gmail.com>
+:
