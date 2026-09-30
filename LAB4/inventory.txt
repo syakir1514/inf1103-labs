@@ -3,3 +3,5 @@
 1003, USB Cable, 3
 1004, monitor, 1
 1005, microphone, 4
+1006, new item, 1
+1007, iphone, 1
