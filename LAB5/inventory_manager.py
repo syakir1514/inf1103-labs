@@ -55,8 +55,8 @@ def update_stock():
         if product['id'] == product_id:
             print()
             print("Product Found:")
-            print(f'Name: {product['name']}')
-            print(f'Current Stock: {product['stock']}')
+            print(f"Name: {product['name']}")
+            print(f"Current Stock: {product['stock']}")
             print()
             new_stock = int(input("New Stock Quantity: "))
             product['stock'] = new_stock
