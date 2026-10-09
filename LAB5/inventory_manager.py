@@ -66,6 +66,31 @@ def update_stock():
             return
     print("Product not found.")
 
+def search_product():
+    with open('inventory.json', 'r') as file:
+        inventory = json.load(file)
+    print("\nSearch Product")
+    product_id = input("Enter Product ID: ")
+    for product in inventory:
+        if product['id'] == product_id:
+            print()
+            print("Product Found:")
+            print("----------------")
+            print(f"ID: {product['id']}")
+            print(f"Name: {product['name']}")   
+            print(f"Price: {product['price']}")
+            print(f"Stock: {product['stock']}")
+            print("----------------")
+            return
+    print("Product not found.")
+
+def save_inventory():
+    with open('inventory.json', 'r') as file:
+        inventory = json.load(file)
+    with open('inventory.json', 'w') as file:
+        json.dump(inventory, file, indent=4)
+    print("Inventory saved successfully!")
+
 def menu():
     while True:
         print("\n----------MENU----------")
@@ -89,7 +114,12 @@ def menu():
         elif choice == '5':
             save_inventory()
         elif choice == '6':
-            print("Exiting the program.")
+            print("Saving inventory before exit...")
+            save_inventory()
+            print("Inventory saved successfully.")
+            print()
+            print("Thank you for using the Inventory Management System.")
+            print("Program Terminated.")
             break
 
 
