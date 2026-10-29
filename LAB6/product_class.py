@@ -9,4 +9,5 @@ class Product:
         self.__stock = self.__stock + quantity
 
     def display_information(self):
-        print(f'Product ID: {self._id}\n Product Name: {self._name}\n Price: {self._price} Stock: {self._stock} ')
+        print("---------------")
+        print(f'Product ID: {self._id}\nProduct Name: {self._name}\nPrice: {self._price}\nStock: {self._stock} ')

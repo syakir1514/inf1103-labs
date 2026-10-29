@@ -17,5 +17,8 @@ class Inventory:
                     return
 
     def display_all(self):
+        if len(self._inventory) == 0:
+            print("No records found")
+            return
         for product in self._inventory:
             product.display_information()
