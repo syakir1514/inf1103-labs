@@ -1,17 +1,3 @@
-
-class Product:
-    def __init__(self, ID, name, price, stock):
-        self._id = ID
-        self._name = name
-        self._price = price
-        self._stock = stock
-
-    def update_stock(self, quantity):
-        self.__stock = self.__stock + quantity
-
-    def display_information(self):
-        print(f'Product ID: {self._id}\n Product Name: {self._name}\n Price: {self._price} Stock: {self._stock} ')
-
 class Inventory:
     def __init__(self):
         self._inventory = []
@@ -33,7 +19,3 @@ class Inventory:
     def display_all(self):
         for product in self._inventory:
             product.display_information()
-        
-
-
-
