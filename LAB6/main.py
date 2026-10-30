@@ -54,6 +54,7 @@ def quit():
     print("Exiting Inventory Management System\nGoodbye!")
     print("---------------")
 
+
 def main_menu(inventory1):
     while True:
         print("\nInventory Management System\nMain Menu\n")
@@ -82,6 +83,38 @@ def main_menu(inventory1):
             
             print(f"\nSuccess! {new_id}: {new_name} has been added to the inventory.")
 
+        elif main_input == "3":
+            print("Search for a Product\n")
+            search_type = input("Search by: 1: Product ID, 2: Name:")
+            if search_type == "1":
+                input_id = input("Enter product id:")
+                for product in inventory1._inventory:
+                    if product._id == input_id:
+                        product.display_information()
+            elif search_type == "2":
+                input_name = input("Enter product name: ")
+                for product in inventory1._inventory:
+                    if product._name == input_name:
+                        product.display_information()
+
+        elif main_input == "4":
+            print("Update stock\n")
+            search_type = input("Update by: 1: Product ID, 2: Name:")
+            if search_type == "1":
+                input_id = input("Enter product id:")
+                for product in inventory1._inventory:
+                    if input_id == product._id:
+                        new_stock = int(input(f"Product {product._id}:{product._name} found. Enter new total stock number:"))
+                        product.update_stock(new_stock)
+                        print(f"Stock for {product._id}:{product._name} updated. New stock: {product._stock}")
+            if search_type == "2":
+                input_name = input("Enter product name:")
+                for product in inventory1._inventory:
+                    if input_name == product._name:
+                        new_stock = int(input(f"Product {product._id}:{product._name} found. Enter new total stock number:"))
+                        product.update_stock(new_stock)
+                        print(f"Stock for {product._id}:{product._name} updated. New stock: {product._stock}")
+                                
         elif main_input == "5":
             save_inventory(inventory1)
             print("\nInventory Saved Successfully")

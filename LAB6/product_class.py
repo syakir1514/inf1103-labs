@@ -5,8 +5,8 @@ class Product:
         self._price = price
         self._stock = stock
 
-    def update_stock(self, quantity):
-        self.__stock = self.__stock + quantity
+    def update_stock(self, new_stock):
+        self._stock = new_stock
 
     def display_information(self):
         print("---------------")
