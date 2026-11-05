@@ -1,0 +1,26 @@
+[
+    {
+        "id": "P001",
+        "name": "Keyboard",
+        "price": 10.0,
+        "stock": "20"
+    },
+    {
+        "id": "P002",
+        "name": "Monitor",
+        "price": 199.99,
+        "stock": 15
+    },
+    {
+        "id": "P003",
+        "name": "Laptop",
+        "price": 500.0,
+        "stock": 5
+    },
+    {
+        "id": "P004",
+        "name": "Mouse",
+        "price": 20.0,
+        "stock": 50
+    }
+]
