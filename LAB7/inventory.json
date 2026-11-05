@@ -1,14 +1,18 @@
 [
     {
+        "medium": "physical",
         "id": "P001",
         "name": "Keyboard",
-        "price": 150.0,
-        "stock": 100
+        "price": 100.0,
+        "stock": 300,
+        "weight": 0.3
     },
     {
+        "medium": "digital",
         "id": "D001",
         "name": "OS",
         "price": 100.0,
-        "stock": 20
+        "stock": 10,
+        "download_size": 500.0
     }
 ]

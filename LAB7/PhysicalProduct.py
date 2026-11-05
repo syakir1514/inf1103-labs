@@ -4,7 +4,7 @@ from CanBeShipped import CanBeShipped
 class PhysicalProduct(Product, CanBeShipped):
     def __init__(self, id, name, price, stock, weight):
         super().__init__(id, name, price, stock)
-        self._medium = "physcial"
+        self._medium = "physical"
         self._weight = weight
 
     def display_information(self):

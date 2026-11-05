@@ -18,14 +18,16 @@ def load_inventory(inventory_obj):
                         item["id"],
                         item["name"],
                         item["price"],
-                        item["stock"]
+                        item["stock"],
+                        item["download_size"]
                     )
                 elif item["medium"] == "physical":
                     new_product = PhysicalProduct(
                         item["id"],
                         item["name"],
                         item["price"],
-                        item["stock"]
+                        item["stock"],
+                        item["weight"]
                     )
                 inventory_obj.add_product(new_product)
         print ("Inventory Loaded")
@@ -41,11 +43,19 @@ def save_inventory(inventory_obj):
     json_list = []
     for product in inventory_obj._inventory:
         product_dict = {
+            "medium": product._medium,
             "id": product._id,
             "name": product._name,
             "price": product._price,
             "stock": product._stock
         }
+
+        if product._medium == "physical":
+            product_dict["weight"] = product._weight
+
+        elif product._medium == "digital":
+            product_dict["download_size"] = product._download_size
+
         json_list.append(product_dict)
 
     with open('inventory.json', 'w') as file:
