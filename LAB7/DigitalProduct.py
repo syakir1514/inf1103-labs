@@ -9,7 +9,11 @@ class DigitalProduct(Product):
         super().display_information()
         print(f"Download Size: {self._download_size} MB")
 
+    def get_fulfilment_info(self):
+        return "This product is delivered digitally."
+
 #test
+
 digital_product = DigitalProduct(
     id = "P001",
     name = "OS",
