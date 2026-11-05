@@ -1,6 +1,9 @@
 import json
-import LAB7.inventory as inventory
-import LAB7.product as product
+from Inventory import Inventory
+from Product import Product
+from PhysicalProduct import PhysicalProduct
+from DigitalProduct import  DigitalProduct
+
 
 # search for file named 'inventory.txt'; if none is found, create it.
 def load_inventory(inventory_obj):
@@ -8,13 +11,22 @@ def load_inventory(inventory_obj):
     try:
         with open('inventory.json', 'r') as file:    # try to open the file in read mode
             loaded_data = json.load(file)
+            
             for item in loaded_data:
-                new_product = product.Product(
-                    item["id"],
-                    item["name"],
-                    item["price"],
-                    item["stock"]
-                )
+                if item["medium"] == "digital":
+                    new_product = DigitalProduct(
+                        item["id"],
+                        item["name"],
+                        item["price"],
+                        item["stock"]
+                    )
+                elif item["medium"] == "physical":
+                    new_product = PhysicalProduct(
+                        item["id"],
+                        item["name"],
+                        item["price"],
+                        item["stock"]
+                    )
                 inventory_obj.add_product(new_product)
         print ("Inventory Loaded")
 
@@ -45,7 +57,7 @@ def startup():
     print("Welcome to Inventory Management System")
     print("---------------")
 
-    inventory1 = inventory.Inventory()                         #creates new inventory object
+    inventory1 = Inventory()                         #creates new inventory object
     load_inventory(inventory1)
     main_menu(inventory1)
     
@@ -53,6 +65,50 @@ def quit():
     print("---------------")
     print("Exiting Inventory Management System\nGoodbye!")
     print("---------------")
+
+def new_product(inventory1):
+    print("Add a New Product\n")
+    new_medium = input("1. Digital OR 2. Physical")
+    if new_medium == "1":
+        new_medium = "digital"
+        new_id = input("Enter Product ID: ")
+        new_name = input("Enter Product Name: ")
+        new_price = float(input("Enter Price: "))
+        new_stock = int(input("Enter Stock Quantity: "))
+        new_download_size = float(input("Enter Download Size in MB: "))
+                         
+        new_product = DigitalProduct(new_id, new_name, new_price, new_stock, new_download_size)
+
+    elif new_medium == "2":
+        new_medium = "physical"
+        new_id = input("Enter Product ID: ")
+        new_name = input("Enter Product Name: ")
+        new_price = float(input("Enter Price: "))
+        new_stock = int(input("Enter Stock Quantity: "))
+        new_weight = float(input("Enter Weight in Kg: "))
+                    
+        new_product = PhysicalProduct(new_id, new_name, new_price, new_stock, new_weight)
+                
+    inventory1.add_product(new_product)
+                
+    print(f"\nSuccess! {new_id}: {new_name} has been added to the inventory.")
+
+
+def search(inventory1):
+    print("Search for a Product\n")
+    search_type = input("Search by: 1: Product ID, 2: Name:")
+    if search_type == "1":
+        input_id = input("Enter product id:")
+        for product in inventory1._inventory:
+            if product._id == input_id:
+                product.display_information()
+    elif search_type == "2":
+        input_name = input("Enter product name: ")
+        for product in inventory1._inventory:
+            if product._name == input_name:
+                product.display_information()
+
+    
 
 
 def main_menu(inventory1):
@@ -71,31 +127,10 @@ def main_menu(inventory1):
             inventory1.display_all()
 
         elif main_input == "2":
-            print("Add a New Product\n")
-            new_id = input("Enter Product ID: ")
-            new_name = input("Enter Product Name: ")
-            new_price = float(input("Enter Price: "))
-            new_stock = int(input("Enter Stock Quantity: "))
-            
-            new_product = product.Product(new_id, new_name, new_price, new_stock)
-            
-            inventory1.add_product(new_product)
-            
-            print(f"\nSuccess! {new_id}: {new_name} has been added to the inventory.")
+            new_product(inventory1)
 
         elif main_input == "3":
-            print("Search for a Product\n")
-            search_type = input("Search by: 1: Product ID, 2: Name:")
-            if search_type == "1":
-                input_id = input("Enter product id:")
-                for product in inventory1._inventory:
-                    if product._id == input_id:
-                        product.display_information()
-            elif search_type == "2":
-                input_name = input("Enter product name: ")
-                for product in inventory1._inventory:
-                    if product._name == input_name:
-                        product.display_information()
+            search(inventory1)
 
         elif main_input == "4":
             print("Update stock\n")
