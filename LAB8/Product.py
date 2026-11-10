@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import Supplier
+from Supplier import Supplier
 
 class Product(ABC):
     def __init__(self, id:str, name:str, price:float, stock:int, supplier: Supplier):
@@ -7,13 +7,28 @@ class Product(ABC):
         self._name = name
         self._price = price
         self._stock = stock
+        self._supplier = supplier
 
     def update_stock(self, new_stock):
         self._stock = new_stock
 
     def display_information(self):
-        print("---------------")
-        print(f'Product ID: {self._id}\nProduct Name: {self._name}\nPrice: {self._price}\nStock: {self._stock} ')
+        print(f'''
+----------------------
+Product ID: {self._id}
+Product Name: {self._name}
+Price: {self._price}
+Stock: {self._stock}''')
+    
+    def display_supplier(self):
+        print(f'''
+-----Supplier Info-----
+Supplier ID: {self._supplier._id}
+Supplier Name: {self._supplier._name}
+Supplier Contact: {self._supplier._email}
+-----------------------
+        ''')
+
 
     @abstractmethod
     def get_fulfilment_info(self):
