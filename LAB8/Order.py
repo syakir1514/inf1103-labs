@@ -15,4 +15,12 @@ class Order():
         for line in self._order_lines:
             total += line.calculate_subtotal()
         return total
+
+    def display_all(self) -> str:
+        for line in self._order_lines:
+            line.display()
+        print(f'Total: {self.calculate_total()}')
+
+        
+
             
