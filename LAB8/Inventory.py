@@ -1,9 +1,26 @@
+from Product import Product
+
 class Inventory:
     def __init__(self):
-        self._inventory = []
+        self._inventory: list[Product] = []
 
-    def add_product(self, product):
+    def add_product(self, product:Product):
         self._inventory.append(product)
+
+    def rm_product(self, product_id:str):
+        for product in self._inventory:
+            if product._id == product_id:
+                self._inventory.remove(product)
+                return True
+        return False
+
+    def find_product(self, product_id: str):
+        for product in self._inventory:
+            if product._id == product_id:
+                self._inventory.remove(product)
+                return product
+        return None
+
 
     def search_product(self, search_type, search_filter):
         for product in self._inventory: 
