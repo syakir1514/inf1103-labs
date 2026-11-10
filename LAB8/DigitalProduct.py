@@ -1,8 +1,8 @@
 from Product import Product
 
 class DigitalProduct(Product):
-    def __init__(self, id, name, price, stock, download_size):
-        super().__init__(id, name, price, stock)
+    def __init__(self, id, name, price, stock, supplier, download_size):
+        super().__init__(id, name, price, stock, supplier)
         self._medium = "digital"
         self._download_size = download_size
 

@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
+import Supplier
 
 class Product(ABC):
-    def __init__(self, id, name, price, stock):
+    def __init__(self, id:str, name:str, price:float, stock:int, supplier: Supplier):
         self._id = id
         self._name = name
         self._price = price
