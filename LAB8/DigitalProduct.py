@@ -1,17 +1,17 @@
 from Product import Product
 
 class DigitalProduct(Product):
-    def __init__(self, id, name, price, stock, supplier, download_size):
+    def __init__(self, id, name, price, stock, supplier, download_size:float):
         super().__init__(id, name, price, stock, supplier)
         self._medium = "digital"
         self._download_size = download_size
 
-    def display_information(self):
+    def display_information(self) -> None:
         super().display_information()
         print(f"Download Size: {self._download_size} MB")
         super().display_supplier()
 
-    def get_fulfilment_info(self):
+    def get_fulfilment_info(self) -> str:
         return "This product is delivered digitally."
 
 #test

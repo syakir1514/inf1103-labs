@@ -6,7 +6,7 @@ class Supplier():
         self._name = supplier_name
         self._email = supplier_email
 
-    def display_information(self):
+    def display_information(self) -> None:
         print (f'''
 ===Supplier Information===
 Supplier ID: {self._id}

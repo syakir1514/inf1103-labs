@@ -9,10 +9,10 @@ class Product(ABC):
         self._stock = stock
         self._supplier = supplier
 
-    def update_stock(self, new_stock):
+    def update_stock(self, new_stock:int) -> None:
         self._stock = new_stock
 
-    def display_information(self):
+    def display_information(self) -> None:
         print(f'''
 ----------------------
 Product ID: {self._id}
@@ -31,5 +31,5 @@ Supplier Contact: {self._supplier._email}
 
 
     @abstractmethod
-    def get_fulfilment_info(self):
+    def get_fulfilment_info(self) -> str:
         pass

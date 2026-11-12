@@ -2,20 +2,20 @@ from Product import Product
 from CanBeShipped import CanBeShipped
 
 class PhysicalProduct(Product, CanBeShipped):
-    def __init__(self, id, name, price, stock, supplier, weight):
+    def __init__(self, id, name, price, stock, supplier, weight:float):
         super().__init__(id, name, price, stock, supplier)
         self._medium = "physical"
         self._weight = weight
 
-    def display_information(self):
+    def display_information(self) -> None:
         super().display_information()
         print(f"Weight: {self._weight} kg")
         super().display_supplier()
 
-    def get_fulfilment_info(self):
+    def get_fulfilment_info(self) -> str:
         return "This product requires physical shipping."
 
-    def calculate_shipping_cost(self):
+    def calculate_shipping_cost(self) -> float:
         return self._weight * 5.0
 
 #test
