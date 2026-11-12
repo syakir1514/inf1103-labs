@@ -4,10 +4,6 @@ from DigitalProduct import DigitalProduct
 from Inventory import Inventory
 from Product import Product
 
-def show_product_details(product: Product) -> None:
-    product.display_information()
-    print(product.get_fulfilment_info())
-
 supplier = Supplier("S001", "Razer", "razer@razer.com")
 
 physical = PhysicalProduct("P001", "Keyboard", 50.0, 30, supplier, 0.2)
