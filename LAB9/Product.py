@@ -3,6 +3,11 @@ from Supplier import Supplier
 
 class Product(ABC):
     def __init__(self, id:str, name:str, price:float, stock:int, supplier: Supplier):
+        if price <=0 :
+            raise ValueError("Price must be greater than zero.")
+        if stock <0:
+            raise ValueError("Stock cannot be negative")
+        
         self._id = id
         self._name = name
         self._price = price
@@ -10,6 +15,9 @@ class Product(ABC):
         self._supplier = supplier
 
     def update_stock(self, new_stock:int) -> None:
+        if new_stock <0:
+            raise ValueError("Stock cannot be negative")
+
         self._stock = new_stock
 
     def display_information(self) -> None:
