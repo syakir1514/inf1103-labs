@@ -1,4 +1,5 @@
 import json
+import csv
 from Inventory import Inventory
 from Product import Product
 from PhysicalProduct import PhysicalProduct
@@ -179,4 +180,32 @@ def main_menu(inventory1):
             quit()
             break
 
-startup()
+def load_products(path: str, inventory: Inventory, supplier: Supplier) -> None:
+    try:
+        file = open(path, newline="")
+    except FileNotFoundError:
+        print(f"Products file not found: {path}")
+    else:
+        with file:
+            reader = csv.reader(file)
+            next(reader, None)  # Skip the header
+
+            for row in reader:
+                try:
+                    medium, product_id, name, price, stock = row
+                    product = ProductFactory.create(
+                        medium, product_id, name, float(price), int(stock), supplier,
+                        weight=1.0 if medium == "physical" else None,
+                        download_size=100.0 if medium == "digital" else None,
+                    )
+                    inventory.add_product(product)
+                    loaded += 1
+                except ValueError as error:
+                    print(f"Skipping row {row}: {error}")
+
+        print(f"{loaded} products loaded.")
+    finally:
+        print("Load attempt finished.")
+
+if __name__ == "__main__":
+    startup()
