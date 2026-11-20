@@ -1,0 +1,15 @@
+[
+    {
+        "medium": "digital",
+        "id": "D001",
+        "name": "gta6",
+        "price": 109.0,
+        "stock": 100,
+        "supplier": [
+            "S001",
+            "Razer",
+            "razer@razer.com"
+        ],
+        "download_size": 500.0
+    }
+]

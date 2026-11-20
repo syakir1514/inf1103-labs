@@ -3,6 +3,8 @@ from Inventory import Inventory
 from Product import Product
 from PhysicalProduct import PhysicalProduct
 from DigitalProduct import  DigitalProduct
+from ProductFactory import ProductFactory
+from Supplier import Supplier
 
 
 # search for file named 'inventory.txt'; if none is found, create it.
@@ -13,22 +15,17 @@ def load_inventory(inventory_obj):
             loaded_data = json.load(file)
             
             for item in loaded_data:
-                if item["medium"] == "digital":
-                    new_product = DigitalProduct(
-                        item["id"],
-                        item["name"],
-                        item["price"],
-                        item["stock"],
-                        item["download_size"]
-                    )
-                elif item["medium"] == "physical":
-                    new_product = PhysicalProduct(
-                        item["id"],
-                        item["name"],
-                        item["price"],
-                        item["stock"],
-                        item["weight"]
-                    )
+                new_product = ProductFactory.create(
+                    product_medium = item['medium'], 
+                    product_id = item['id'], 
+                    name = item['name'], 
+                    price = item['price'], 
+                    stock = item['stock'],
+                    supplier = Supplier(*item['supplier']),
+                    download_size = item.get('download_size'),
+                    weight = item.get('weight')
+                )
+                
                 inventory_obj.add_product(new_product)
         print ("Inventory Loaded")
 
@@ -47,7 +44,8 @@ def save_inventory(inventory_obj):
             "id": product._id,
             "name": product._name,
             "price": product._price,
-            "stock": product._stock
+            "stock": product._stock,
+            "supplier": [product._supplier._id, product._supplier._name, product._supplier._email]
         }
 
         if product._medium == "physical":
@@ -78,27 +76,29 @@ def quit():
 
 def new_product(inventory1):
     print("Add a New Product\n")
-    new_medium = input("1. Digital OR 2. Physical")
-    if new_medium == "1":
-        new_medium = "digital"
-        new_id = input("Enter Product ID: ")
-        new_name = input("Enter Product Name: ")
-        new_price = float(input("Enter Price: "))
-        new_stock = int(input("Enter Stock Quantity: "))
-        new_download_size = float(input("Enter Download Size in MB: "))
-                         
-        new_product = DigitalProduct(new_id, new_name, new_price, new_stock, new_download_size)
+    new_medium = input("Product medium (physical/digital): ").strip().lower()
+    new_weight = None
+    new_download_size = None
 
-    elif new_medium == "2":
-        new_medium = "physical"
-        new_id = input("Enter Product ID: ")
-        new_name = input("Enter Product Name: ")
-        new_price = float(input("Enter Price: "))
-        new_stock = int(input("Enter Stock Quantity: "))
-        new_weight = float(input("Enter Weight in Kg: "))
-                    
-        new_product = PhysicalProduct(new_id, new_name, new_price, new_stock, new_weight)
-                
+    if new_medium == "physical":
+        new_weight = float(input("Enter weight in kg: "))
+    elif new_medium == "digital":
+        new_download_size = float(input("Enter download size in MB: "))
+    else:
+        print("Invalid medium.")
+        return
+
+    new_id = input("Enter product ID: ")
+    new_name = input("Enter product name: ")
+    new_price = float(input("Enter price: "))
+    new_stock = int(input("Enter stock quantity: "))
+    new_supplier = Supplier("S001", "Razer", "razer@razer.com")
+
+    new_product = ProductFactory.create(
+        new_medium, new_id, new_name, new_price, new_stock, new_supplier,
+        weight=new_weight, download_size=new_download_size,
+    )
+    
     inventory1.add_product(new_product)
                 
     print(f"\nSuccess! {new_id}: {new_name} has been added to the inventory.")
