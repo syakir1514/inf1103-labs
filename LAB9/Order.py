@@ -1,7 +1,7 @@
 from Orderline import Orderline
 from Product import Product
-from LAB9.discount_strategy.DiscountStrategy import DiscountStrategy
-from LAB9.discount_strategy.NoDiscount import NoDiscount
+from discount_strategy.DiscountStrategy import DiscountStrategy
+from discount_strategy.NoDiscount import NoDiscount
 
 
 class Order():

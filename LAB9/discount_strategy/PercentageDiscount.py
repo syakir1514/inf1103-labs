@@ -1,4 +1,4 @@
-from LAB9.discount_strategy.DiscountStrategy import DiscountStrategy
+from discount_strategy.DiscountStrategy import DiscountStrategy
 
 class PercentageDiscount (DiscountStrategy):
     def __init__(self, percentage: float):
